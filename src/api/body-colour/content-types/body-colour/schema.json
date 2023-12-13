@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "body_colours",
+  "info": {
+    "singularName": "body-colour",
+    "pluralName": "body-colours",
+    "displayName": "Body Colour",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Code": {
+      "type": "string",
+      "unique": true,
+      "minLength": 2,
+      "required": true
+    },
+    "Description": {
+      "type": "text"
+    },
+    "Material": {
+      "type": "string"
+    },
+    "variants": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::variant.variant",
+      "mappedBy": "body_colour"
+    },
+    "Colour": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color"
+    }
+  }
+}
